@@ -18,6 +18,8 @@ Regla: solo correcciones mínimas que no cambian el comportamiento (avisos, meta
 | 2026-10-24 | l10n_ve_payment_extension | IDs de 3 accesos sin el prefijo `account.` | Aviso "Creating record account.access_... in module" |
 | 2026-10-24 | varios | `self._context` → `self.env.context`; `_()` fuera de las definiciones de campos; `@api.constrains` sin campos relacionados no almacenados | Avisos de obsolescencia y de traducción |
 | 2026-10-24 | l10n_ve_igtf, l10n_ve_accountant, l10n_ve_stock_account, l10n_ve_payment_extension, l10n_ve_fiscal_lock_days | Campos del asistente de pago con IGTF almacenados como `amount`; `precompute=False` explícito donde Odoo ya no precalculaba; se quitan un `default` y una lista de selección redundantes en campos relacionados | Avisos de campos calculados; sin cambio de comportamiento |
+| 2026-10-24 | l10n_ve_invoice, l10n_ve_stock_reports, l10n_ve_currency_rate_live | Donde se compara el código del bolívar se acepta `VES` además de `VEF` (el producto muestra el bolívar con su código vigente, VES) | Sin esto, reportes y tasa BCV tratarían al bolívar como divisa |
+| 2026-10-24 | l10n_ve_stock | Mensaje de depuración del ajuste de inventario como `debug` en lugar de `warning` | Aviso falso en el registro cada vez que se aplica un inventario |
 
 ## Cómo traer las actualizaciones de Binaural
 

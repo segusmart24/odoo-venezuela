@@ -17,7 +17,7 @@ class WizardStockBookReport(models.TransientModel):
     _description = "Wizard para generar reportes de libro de inventario"
 
     def _default_check_currency_system(self):
-        is_system_currency_bs = self.env.company.currency_id.name == "VEF"
+        is_system_currency_bs = self.env.company.currency_id.name in ("VEF", "VES")
         return is_system_currency_bs
 
     def _default_date_to(self):

@@ -147,7 +147,7 @@ class StockQuan(models.Model):
         function.
         :return: The stock moves resulting from the inventory adjustment
         """
-        _logger.warning("Entering _apply_inventory method.")
+        _logger.debug("Entering _apply_inventory method.")
         if self.env.company.not_allow_negative_inventory_adjustments:
             for line in self:
                 new_qty = line.inventory_quantity

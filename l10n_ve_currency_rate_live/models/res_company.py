@@ -96,7 +96,7 @@ class ResCompany(models.Model):
         if isinstance(rates_bcv, tuple):
             return {}
 
-        final_rates = {"VEF": (1.0, current_date)}
+        final_rates = {"VEF": (1.0, current_date), "VES": (1.0, current_date)}
         for currency_code, rate_data in rates_bcv.items():
             rate, date = rate_data
             if str(date) == str(current_date) and rate:
