@@ -2,11 +2,12 @@
 
 Esta rama (`19.0-s24`) es la rama `19.0` de `binaural-dev/odoo-venezuela` más los parches de esta lista, cada uno en su propio commit. El proyecto `segusmart24/grupo-odoo` usa esta rama como submódulo.
 
-Regla: solo correcciones mínimas que no cambian el comportamiento (avisos, metadatos). Cualquier cambio funcional se hace heredando desde un módulo propio `s24_*`, nunca aquí.
+Regla: solo correcciones mínimas que no cambian el comportamiento (avisos, metadatos) o que evitan un error de instalación sin alterar la lógica. Cualquier cambio funcional se hace heredando desde un módulo propio `s24_*`, nunca aquí.
 
 | Fecha | Módulo | Cambio | Motivo |
 | --- | --- | --- | --- |
 | 2026-10-24 | l10n_ve_donation | `author`, `website` y `license` (LGPL-3) en `__manifest__.py` | Eliminar los avisos "Missing author/license key" que ponían los builds de Odoo.sh en amarillo |
+| 2026-10-24 | l10n_ve_payment_extension | `tax.unit.available_date` con valor por defecto (fecha del día) | La unidad tributaria que crea `l10n_ve_accountant` no trae fecha; al instalar retenciones el campo pasa a obligatorio y el log muestra `ERROR odoo.schema: column "available_date" ... contains null values`. Con el valor por defecto la columna se llena y el error desaparece |
 
 ## Cómo traer las actualizaciones de Binaural
 
