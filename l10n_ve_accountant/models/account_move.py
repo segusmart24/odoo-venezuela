@@ -46,19 +46,6 @@ class AccountMove(models.Model):
         self.ensure_one()
         return self.invoice_date_display or self.date
 
-    _sql_constraints = [
-        (
-            "unique_name",
-            "",
-            "Another entry with the same name already exists.",
-        ),
-        (
-            "unique_name_ve",
-            "",
-            "Another entry with the same name already exists.",
-        ),
-    ]
-
     company_currency_rate = fields.Float(
         string="Tasa de moneda de la compañía",
         compute="_compute_company_currency_rate",
@@ -325,19 +312,6 @@ class AccountMove(models.Model):
         store=True,
     )
 
-    _sql_constraints = [
-        (
-            "unique_name",
-            "",
-            "Another entry with the same name already exists.",
-        ),
-        (
-            "unique_name_ve",
-            "",
-            "Another entry with the same name already exists.",
-        ),
-    ]
-
     detailed_amounts = fields.Binary(compute="_compute_detailed_amounts")
 
     foreign_debit = fields.Monetary(
@@ -389,12 +363,12 @@ class AccountMove(models.Model):
     amount = fields.Float(tracking=True)
 
     real_portion_amount = fields.Monetary(
-        string=_("Real Portion"),
+        string="Real Portion",
         currency_field='company_currency_id',
-        help=_("Accumulated remainder from cross-currency rounding."),
+        help="Accumulated remainder from cross-currency rounding.",
     )
     real_portion_count = fields.Integer(
-        string=_("Real Portion Adjustments"),
+        string="Real Portion Adjustments",
         default=0,
     )
     # Stored to avoid KeyError in trigger tree when
@@ -403,6 +377,10 @@ class AccountMove(models.Model):
     company_currency_id = fields.Many2one(
         related='company_id.currency_id', readonly=True, store=True,
     )
+    # Parche S24: company_currency_id es almacenado y no precalculado, así que
+    # Odoo ya no precalcula invoice_currency_rate; se declara explícito para
+    # evitar el aviso "cannot be precomputed" sin cambiar el comportamiento.
+    invoice_currency_rate = fields.Float(precompute=False)
 
     amount_residual_company = fields.Monetary(
         string='residual amount',
@@ -2424,5 +2402,5 @@ class AccountMove(models.Model):
     @api.ondelete(at_uninstall=False)
     def _unlink_except_posted_or_was_posted(self):
         for move in self:
-            if move.posted_before and not self._context.get('force_delete'):
+            if move.posted_before and not self.env.context.get('force_delete'):
                 raise UserError(_("You cannot delete a journal item that is posted, cancelled, or has been previously posted."))

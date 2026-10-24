@@ -59,7 +59,7 @@ class AccountMove(models.Model):
     free_form_copy_number = fields.Integer(default=0, copy=False)
 
     invoice_date_display_datetime = fields.Datetime(
-        string="Invoice Date",
+        string="Invoice Date and Time",
         readonly=True,
         copy=False,
     )
@@ -540,7 +540,7 @@ class AccountMove(models.Model):
                 move.correlative = move.declaration_unique_of_customs
         return moves
 
-    @api.constrains("correlative", "is_contingency")
+    @api.constrains("correlative")
     def _check_correlative(self):
         AccountMove = self.env["account.move"]
         is_series_invoicing_enabled = self.company_id.group_sales_invoicing_series

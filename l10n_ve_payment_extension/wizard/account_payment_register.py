@@ -6,9 +6,6 @@ from ..utils.utils_retention import load_retention_lines
 class AccountPaymentRegister(models.TransientModel):
     _inherit = "account.payment.register"
 
-    company_currency_id = fields.Many2one(
-        "res.currency", default=lambda self: self.env.company.currency_id
-    )
     foreign_currency_id = fields.Many2one(
         "res.currency", default=lambda self: self.env.company.foreign_currency_id.id
     )
@@ -59,7 +56,7 @@ class AccountPaymentRegister(models.TransientModel):
             self.group_payment = False
         self.journal_id = self.env.company.iva_customer_retention_journal_id.id
         self.edit_retention_fields = False
-        move_ids = self._context.get("active_ids", [])
+        move_ids = self.env.context.get("active_ids", [])
         invoices = self.env["account.move"].browse(move_ids)
 
         lines = self._load_iva_retention_lines(invoices)

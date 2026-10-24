@@ -1412,3 +1412,13 @@ msgstr ""
 #: model:ir.actions.report,name:l10n_ve_stock.inventory_valuation_report
 msgid "inventory Valuation"
 msgstr "Valoración de inventario"
+
+#. module: l10n_ve_stock
+#: model:ir.model.fields,field_description:l10n_ve_stock.field_stock_picking_alter_location_line__name
+msgid "Location Name"
+msgstr "Nombre de la ubicación"
+
+#. module: l10n_ve_stock
+#: model:ir.model.fields,field_description:l10n_ve_stock.field_stock_move__priority_location
+msgid "Location Priority"
+msgstr "Prioridad de la ubicación"

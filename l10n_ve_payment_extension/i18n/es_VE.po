@@ -3742,3 +3742,28 @@ msgstr ""
 "municipal de esta sucursal usan el correlativo de la empresa matriz en lugar "
 "de una secuencia independiente. Solo aplica si la sucursal comparte el RIF "
 "de la empresa matriz."
+
+#. module: l10n_ve_payment_extension
+#: model:ir.model.fields,field_description:l10n_ve_payment_extension.field_account_move__count_municipal_retention
+msgid "count municipal retention"
+msgstr "cantidad de retenciones municipales"
+
+#. module: l10n_ve_payment_extension
+#: model:ir.model.fields,field_description:l10n_ve_payment_extension.field_account_retention__foreign_total_invoice_amount
+msgid "Taxable Income (Foreign)"
+msgstr "Base imponible (moneda alterna)"
+
+#. module: l10n_ve_payment_extension
+#: model:ir.model.fields,field_description:l10n_ve_payment_extension.field_account_retention__foreign_total_iva_amount
+msgid "Total IVA (Foreign)"
+msgstr "Total IVA (moneda alterna)"
+
+#. module: l10n_ve_payment_extension
+#: model:ir.model.fields,field_description:l10n_ve_payment_extension.field_retention_line_report__state_show
+msgid "State (display)"
+msgstr "Estado (visible)"
+
+#. module: l10n_ve_payment_extension
+#: model:ir.model.fields,field_description:l10n_ve_payment_extension.field_retention_line_report__type_show
+msgid "Type (display)"
+msgstr "Tipo (visible)"

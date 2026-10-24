@@ -54,7 +54,7 @@ might use is ready in advance):
 """,
     'author': 'Binaural',
     'depends': [
-        'account', 'l10n_ve_accountant', 'od_journal_sequence', 'l10n_ve_invoice',
+        'account', 'l10n_ve_accountant', 's24_ve_secuencia_diario', 'l10n_ve_invoice',
         'l10n_ve_igtf', 'account_invoice_pricelist',
     ],
     'data': [

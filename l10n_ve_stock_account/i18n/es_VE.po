@@ -1366,3 +1366,8 @@ msgstr "Último día del mes"
 #: code:addons/l10n_ve_stock_account/models/stock_picking.py:0
 msgid "transfer_ids"
 msgstr ""
+
+#. module: l10n_ve_stock_account
+#: model:ir.model.fields,field_description:l10n_ve_stock_account.field_stock_picking__invoice_count
+msgid "Invoice Count"
+msgstr "Cantidad de facturas"

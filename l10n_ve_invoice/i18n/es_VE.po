@@ -960,3 +960,12 @@ msgstr ""
 msgid "Free Form"
 msgstr "Forma Libre"
 
+#. module: l10n_ve_invoice
+#: model:ir.model.fields,field_description:l10n_ve_invoice.field_wizard_accounting_reports__show_field_currency_system
+msgid "Show report in currency system option"
+msgstr "Mostrar opción de reporte en moneda del sistema"
+
+#. module: l10n_ve_invoice
+#: model:ir.model.fields,field_description:l10n_ve_invoice.field_account_move__invoice_date_display_datetime
+msgid "Invoice Date and Time"
+msgstr "Fecha y hora de la factura"

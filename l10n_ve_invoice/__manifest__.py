@@ -13,7 +13,7 @@
         "l10n_ve_base",
         "l10n_ve_accountant",
         "l10n_ve_contact",
-        "od_journal_sequence",
+        "s24_ve_secuencia_diario",
         "account_debit_note",
     ],
     "data": [

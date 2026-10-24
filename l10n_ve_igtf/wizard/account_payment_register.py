@@ -26,7 +26,7 @@ class AccountPaymentRegisterIgtf(models.TransientModel):
 
     amount_without_difference = fields.Monetary(
         string="Amount without Difference",
-        compute="_compute_amount", readonly=False 
+        compute="_compute_amount", readonly=False, store=True,
     )
 
     def _default_igtf_percent_from_company(self):
@@ -42,10 +42,9 @@ class AccountPaymentRegisterIgtf(models.TransientModel):
     igtf_amount = fields.Float(
         string="IGTF Amount", 
         help="IGTF Amount",
-        compute="_compute_amount", readonly=False
-        
+        compute="_compute_amount", readonly=False, store=True,
     )
-    igtf_to_show = fields.Monetary(string="Amount with IGTF",compute="_compute_amount", readonly=False)
+    igtf_to_show = fields.Monetary(string="Amount with IGTF to show", compute="_compute_amount", readonly=False, store=True)
 
     is_igtf_on_foreign_exchange = fields.Boolean(
         string="IGTF on Foreign Exchange?",

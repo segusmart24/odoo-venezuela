@@ -13,7 +13,7 @@ _logger = logging.getLogger(__name__)
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
-    invoice_count = fields.Integer(string="Invoices", compute="_compute_invoice_count")
+    invoice_count = fields.Integer(string="Invoice Count", compute="_compute_invoice_count")
     invoice_ids = fields.Many2many(
         comodel_name="account.move",
         string="Invoices",
@@ -21,7 +21,7 @@ class StockPicking(models.Model):
         search="_search_invoice_ids",
         copy=False,
     )
-    operation_code = fields.Selection(related="picking_type_id.code")
+    operation_code = fields.Selection(string="Operation Code", related="picking_type_id.code")
 
     is_return = fields.Boolean()
 
@@ -868,6 +868,12 @@ class StockPicking(models.Model):
                 ]
             )
 
+    # Parche S24: el cálculo depende de sale_id, que no se precalcula, así que
+    # Odoo ya no precalcula estas ubicaciones; se declara explícito para evitar
+    # el aviso "cannot be precomputed" sin cambiar el comportamiento.
+    location_id = fields.Many2one(precompute=False)
+    location_dest_id = fields.Many2one(precompute=False)
+
     @api.depends("picking_type_id", "partner_id", "sale_id")
     def _compute_location_id(self):
         for picking in self:
@@ -1207,7 +1213,7 @@ class StockPicking(models.Model):
 
     # === CONSTRAINT METHODS ===#
 
-    @api.constrains("transfer_reason_id", "operation_code")
+    @api.constrains("transfer_reason_id")
     def _check_transfer_reason_required(self):
         for record in self:
             if record.operation_code == "internal" and not record.transfer_reason_id:

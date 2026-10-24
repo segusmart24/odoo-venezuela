@@ -158,14 +158,14 @@ class AccountRetention(models.Model):
 
     foreign_total_invoice_amount = fields.Monetary(
         currency_field="foreign_currency_id",
-        string="Taxable Income",
+        string="Taxable Income (Foreign)",
         compute="_compute_totals",
         help="Taxable Income Total",
         store=True,
     )
     foreign_total_iva_amount = fields.Monetary(
         currency_field="foreign_currency_id",
-        string="Total IVA", compute="_compute_totals", store=True
+        string="Total IVA (Foreign)", compute="_compute_totals", store=True
     )
     foreign_total_retention_amount = fields.Monetary(
         currency_field="foreign_currency_id",
