@@ -19,4 +19,6 @@ def create_journal_sequences(env):
             rseq_vals = journal._prepare_sequence(journal_vals, refund=True)
             vals["refund_sequence_id"] = env["ir.sequence"].create(rseq_vals).id
         journal.write(vals)
+    # Parche S24: elimina la secuencia provisional de pre_install.py.
+    env["ir.sequence"].search([("name", "=", "od_journal_sequence: provisional")]).unlink()
     return

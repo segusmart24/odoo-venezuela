@@ -19,6 +19,7 @@
     "license": "OPL-1",
     "price": 12,
     "currency": "USD",
+    "pre_init_hook": "prefill_journal_sequences",
     "post_init_hook": "create_journal_sequences",
     "images": ["static/description/banner.png"],
 }
